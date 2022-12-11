@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CARS BG LOGIN
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/register.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+
+    {% load test %}
+    <div class="form">
+        <form class="register-form" method="post" action="{% url 'login' %}">
+            <h1 class="title">Login</h1>
+            {{ form.errors }}
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                {{ form.username|placeholder:'Username: ' }}
+            </div>
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.password|placeholder:'Password: ' }}
+            </div>
+            <button type="submit" class="register-btn">REGISTER</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

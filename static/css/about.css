@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    background: rgb(156,156,156);
+    background: linear-gradient(90deg, rgba(156,156,156,1) 0%, rgba(217,217,217,1) 100%);
+}
+
+.nav {
+    background-color: white;
+}
+
+.main {
+    position: relative;
+    margin: 0;
+    background-image: url("../img/background.png");
+    height: 985px;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+
+
+.about-us {
+    position: relative;
+    margin: 0;
+    background-image: url("../img/background.png");
+    height: 985px;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+.about-main {
+    position: absolute;
+    top: 12.9%;
+    left: 23%;
+    margin: 0;
+    color: white;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 263%;
+}
+
+.logo {
+    position: absolute;
+    width: 32%;
+    height: 59%;
+    top: 50px;
+    right: 381px;
+}
+
+.text {
+    position: absolute;
+    color: white;
+    top: 69%;
+    left: 23%;
+    width: 47%;
+    margin: 0;
+    font-family: "Cambria Math";
+    font-size: 163%;
+}

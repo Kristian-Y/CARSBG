@@ -1,0 +1,33 @@
+<!-- chat.html -->
+<h1>Chat</h1>
+
+<p>Welcome, {{ user.username }}.</p>
+
+<h2>Chat rooms</h2>
+
+<ul>
+    {% for chat_room in chat_rooms %}
+        <li><a href="{% url 'chat' %}?chat_room={{ chat_room.name }}">{{ chat_room.name }}</a></li>
+    {% endfor %}
+</ul>
+
+
+{% if messages %}
+    <h2>Messages</h2>
+
+    <ul>
+        {% for message in messages %}
+            <li>{{ message.sender.username }}: {{ message.text }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+<form method="post" action="{% url 'send_message' %}">
+    <label for="message">Message:</label>
+    <input type="text" name="message" id="message">
+    <br>
+    <input type="hidden" name="chat_room" value="{{ selected_chat_room.name }}">
+    <input type="submit" value="Send">
+    {% csrf_token %}
+</form>

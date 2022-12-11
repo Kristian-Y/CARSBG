@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    CARS BG
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/index.css" />
+{% endblock %}
+{% block content %}
+    <section class="main">
+        <h1 class="welcome">Welcome to CARS.BG</h1>
+        <img src="../../static/img/suv_transperant.png" alt="Suv img" class="suv-img">
+        <a href="{% url 'about' %}" class="about-btn">About Us</a>
+    </section>
+{% endblock %}

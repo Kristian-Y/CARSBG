@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CARS BG PROFILE DETAILS
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/profile-details.css" />
+{% endblock %}
+
+{% block content %}
+    <section class="main">
+        <div class="info">
+            <h1 class="profile-username">Username: {{ user.username }}</h1>
+
+
+            {% if user.first_name != None and user.last_name != None %}
+                <h1 class="profile-fullname">Full Name: {{ user.first_name }} {{ user.last_name }}</h1>
+            {% elif user.first_name != None and user.last_name == None %}
+                <h1 class="profile-fullname">First Name: {{ user.first_name }}</h1>
+            {% elif user.first_name == None and user.last_name != None%}
+                <h1 class="profile-fullname">Last Name: {{ user.last_name }}</h1>
+            {% else %}
+                <h1 class="profile-fullname">Full Name: Not give</h1>
+            {% endif %}
+
+
+            <h1 class="cars-listed">Cars Listed: {{ car_listed }}</h1>
+        </div>
+
+
+        {% if user == request.user %}
+            <a href="{% url 'profile-edit' user.id %}" class="edit-a"><img src="../../static/img/edit-a.png" alt="Edit" class="edit-img"></a>
+            <a href="{% url 'profile-delete' user.id %}" class="delete-a"><img src="../../static/img/delete-user.png" alt="delete" class="delete-img"></a>
+        {% else %}
+            <a href="" class="send-a"><img src="../../static/img/send-message.png" alt="Send Message" class="send-img"></a>
+        {% endif %}
+
+        {% if user.profile_picture %}
+            <img src="{{ user.profile_picture }}" alt="Suv img" class="profile-img">
+        {% else %}
+             <img src="../../static/img/profile_img.png" alt="Suv img" class="profile-img">
+        {% endif %}
+    </section>
+{% endblock %}

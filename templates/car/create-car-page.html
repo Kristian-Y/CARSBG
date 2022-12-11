@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/car_advert_form.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+    
+    <div class="form">
+        <h1 class="title">Create Car Advert</h1>
+        <img src="../../static/img/car.png" alt="Smiley face" class="form_image" width="519" height="513">
+        <form class="register-form" method="post" action="{% url 'create-car-advert' %} ">
+            
+            {{ form.errors }}
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                {{ form.car_brand }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                {{ form.car_model }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.engine }}
+            </div>
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.type_of_fuel }}
+            </div>
+            
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.description }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.year }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.price }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+               {{ form.images }}
+            </div>
+
+
+            <button type="submit" class="register-btn">ADVERT</button>
+            {% csrf_token %}
+        </form>
+    </div>
+</body>
+</html>

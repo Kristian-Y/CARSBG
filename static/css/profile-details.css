@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    background: rgb(156,156,156);
+    background: linear-gradient(90deg, rgba(156,156,156,1) 0%, rgba(217,217,217,1) 100%);
+}
+
+.nav {
+    background-color: white;
+}
+
+.main {
+    position: relative;
+    margin: 0;
+    background-image: url("../img/background.png");
+    height: 999px;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+
+.profile-username {
+    color: white;
+    margin: 0;
+}
+.profile-fullname {
+    color: white;
+    margin: 0;
+}
+
+.profile-img {
+    height: 27%;
+    width: 14%;
+    position: absolute;
+    left: 56%;
+    top: 12%;
+    border-radius: 50%;
+}
+.send-a {
+    position: relative;
+    left: 61%;
+    top: 41%;
+}
+
+.send-img {
+    height: 8%;
+    width: 4%;
+}
+
+.delete-a {
+    position: relative;
+    left: 61%;
+    top: 41%;
+}
+
+.delete-img {
+    height: 8%;
+    width: 4%;
+}
+
+.edit-a {
+    position: relative;
+    left: 61%;
+    top: 41%;
+}
+
+.edit-img {
+    height: 8%;
+    width: 4%;
+}
+
+.cars-listed {
+    margin: 0;
+    color: white;
+}
+
+.info {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.77);
+    top: 21%;
+    left: 30%;
+    border-radius: 10px;
+}
+
+.info h1 {
+    margin: 35px;
+}
+
+
+.delete-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(156,156,156);
+    background: linear-gradient(90deg, rgba(156,156,156,1) 0%, rgba(217,217,217,1) 100%);
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.btns {
+    justify-content: space-around;
+    margin-left: 38%;
+}
+
+.btns a {
+    text-decoration: none;
+    color: white;
+    font-size: 200%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.btn-yes {
+    background-color: green;
+}
+
+.btn-no {
+    background-color: red;
+}

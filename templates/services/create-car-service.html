@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ CARS.BG CREATE CAR SERVICE
+{% endblock %}
+
+{% block style %}
+        <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../static/css/car_advert_form.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="form">
+        <h1 class="title">LIST CAR SERVICE</h1>
+        <form class="register-form" method="post" action="{% url 'create-car-service' %} ">
+
+            {{ form.errors }}
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                {{ form.name }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                {{ form.description }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.time_open }}
+            </div>
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.time_close }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.location }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.logo }}
+            </div>
+
+            <button type="submit" class="register-btn">LIST</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

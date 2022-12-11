@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    background-image: url('../img/background.png');
+    background-size: 100%;
+}
+.nav {
+    background-color: white;
+}
+.card {
+
+    border-radius: 15px;
+    margin-top: 286px;
+    display: inline-block;
+    margin-left: 150px;
+    margin-bottom: 50px;
+    width: 25%;
+    background-color: rgb(147, 147, 147);
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+}
+
+.container a {
+    position: absolute;
+    top: 26px;
+    right: 49px;
+    border-radius: 10px;
+}
+
+.total {
+    text-align: center;
+}
+
+.details_btn {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: #111;
+}
+
+

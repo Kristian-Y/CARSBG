@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CARS BG CATALOGUE
+{% endblock %}
+
+{% block style %}
+    {% load static %}
+   <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/catalogue.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h1 class="total">Total Cars: {{ cars|length }}</h1>
+        <span style="font-size:30px;cursor:pointer" id="openBtn">&#9776; Filter</span>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" id="closeBtn" class="closebtn">&times;</a>
+            <form method="POST">
+                {{ filter_form }}
+                <button>Filter</button>
+                {% csrf_token %}
+            </form>
+        </div>
+
+        {% if cars %}
+            <div class="cars">
+                {% for car in cars %}
+                <div class="card">
+                    <img src="/static/img/test_img_car.jpg" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>{{ car.car_brand }} {{ car.car_model }}</b></h4>
+                        <p>Price: {{ car.price }}</p>
+                        <a href="" class="details_btn">DETAILS</a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <h1 class="no-cars">No cars for sale</h1>
+        {% endif %}
+    <script src="/static/js/catalogue.js"></script>
+{% endblock %}
