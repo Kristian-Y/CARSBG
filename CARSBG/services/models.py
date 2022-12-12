@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 
 # Create your models here.
+
+UserModel = get_user_model()
 
 
 class CarService(models.Model):
@@ -38,6 +41,13 @@ class CarService(models.Model):
     logo = models.URLField(
         null=False,
         blank=False
+    )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.RESTRICT,
+        null=True,
+        blank=True,
     )
 
 
@@ -80,4 +90,11 @@ class RentACar(models.Model):
         max_length=MAX_LEN_LOCATION,
         null=False,
         blank=False
+    )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.RESTRICT,
+        null=True,
+        blank=True,
     )

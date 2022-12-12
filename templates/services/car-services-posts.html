@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/car-services.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+    <section class="list">
+        {% if car_services %}
+            <h1 class="total">Total Car Services: {{ car_services|length }}</h1>
+            <div class="services">
+                {% for car_service in car_services %}
+                    <a href="#"><div class="service">
+                        <img src="{{ car_service.logo }}" alt="logo" class="logo">
+                        <div class="info">
+                            <h1 class="name">{{ car_service.name }}</h1>
+                            <h4 class="location">location: {{ car_service.location }}</h4>
+                        </div>
+                    </div></a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h1 class="no-cars">No Car Services listed</h1>
+        {% endif %}
+    </section>
+{% endblock %}

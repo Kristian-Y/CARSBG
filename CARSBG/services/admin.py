@@ -13,4 +13,3 @@ class CarServiceAdmin(admin.ModelAdmin):
 @admin.register(RentACar)
 class RenACarAdmin(admin.ModelAdmin):
     pass
-

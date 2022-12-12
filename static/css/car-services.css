@@ -1,0 +1,58 @@
+.body {
+    margin: 0;
+}
+
+.total {
+    margin: 0;
+    text-align: center;
+}
+
+.list {
+    position: relative;
+    background-image: url('../img/background.png');
+    height: 984px;
+}
+
+.services {
+    position: relative;
+    top: 25%;
+    left: 34%;
+
+    color: white;
+    width: 37%;
+}
+
+.service {
+    color: white;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 10px;
+}
+.service:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+                rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                rgba(0, 0, 0, 0.17) 0px 12px 13px,
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+.logo {
+    height: 96px;
+    width: 96px;
+}
+
+.info {
+    display: inline-block;
+    position: relative;
+    top: -34px;
+}
+
+.name {
+    margin: 0;
+}
+
+.location {
+    margin: 0;
+}
+

@@ -61,3 +61,14 @@ class Catalogue(views.CreateView):
 
 def advert(request):
     return render(request, 'base/advert.html')
+
+
+class CarDetails(views.CreateView):
+    def get(self, request, *args, **kwargs):
+        car_id = kwargs.get('pk')
+        car = Car.objects.get(id=car_id)
+
+        context = {
+            'car': car
+        }
+        return render(request, 'car/car-details.html', context)

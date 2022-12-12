@@ -53,6 +53,9 @@ class DeleteProfile(views.DeleteView):
     model = UserModel
     success_url = reverse_lazy('index')
 
+    def post(self, request, *args, **kwargs):
+        self.request.user.delete()
+
 
 class LogOutView(auth_views.LogoutView):
     next_page = reverse_lazy('index')
