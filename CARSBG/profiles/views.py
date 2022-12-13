@@ -27,13 +27,15 @@ class ProfileDetails(views.DetailView):
     template_name = 'profiles/details.html'
     model = UserModel
 
-    def cars_listed(self):
-        cars_listed = len(Car.objects.filter(user=self.request.user))
+    def cars_listed(self, user):
+        cars_listed = len(Car.objects.filter(user=user))
         return cars_listed
 
     def get_context_data(self, **kwargs):
         context = super(ProfileDetails, self).get_context_data(**kwargs)
-        context['car_listed'] = self.cars_listed()
+        user = UserModel.objects.get(id=self.kwargs['pk'])
+        context['car_listed'] = self.cars_listed(user)
+        context['user'] = user
         return context
 
 

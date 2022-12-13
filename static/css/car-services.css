@@ -1,5 +1,6 @@
 .body {
     margin: 0;
+    overflow-y: hidden;
 }
 
 .total {
@@ -10,7 +11,8 @@
 .list {
     position: relative;
     background-image: url('../img/background.png');
-    height: 984px;
+    height: 100vh;
+
 }
 
 .services {
@@ -20,6 +22,11 @@
 
     color: white;
     width: 37%;
+
+    height: 40%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .service {

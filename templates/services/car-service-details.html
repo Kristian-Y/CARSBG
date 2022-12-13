@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+CARS BG CAR SERVICE DETAILS
+{% endblock %}
+
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/car-service-details.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section class="main">
+        <h1 class="title">Car Service</h1>
+        <div class="info">
+            <h1>Name: {{ carservice.name }}</h1>
+            <h1>Opens from: {{ carservice.time_open }}</h1>
+            <h1>Closes in: {{ carservice.time_close }}</h1>
+            <h1>Location: {{ carservice.location }}</h1>
+            <h1>Owner: <a href="{% url 'profile-details' carservice.user.id %}" class="owner">{{ carservice.user.username }}</a></h1>
+        </div>
+        <div class="description">
+            <h1>Description</h1>
+            {{ carservice.description }}
+        </div>
+        <img src="{{ carservice.logo }}" alt="Suv img" class="image">
+    </section>
+{% endblock %}

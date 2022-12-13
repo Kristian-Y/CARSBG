@@ -49,3 +49,13 @@ class RentACarPosts(generic.CreateView):
 
     def post(self, request, *args, **kwargs):
         pass
+
+
+class CarServiceDetails(generic.DetailView):
+    template_name = 'services/car-service-details.html'
+    model = CarService
+
+
+class RentACarDetails(generic.DetailView):
+    template_name = 'services/rent-a-car-details.html'
+    model = RentACar

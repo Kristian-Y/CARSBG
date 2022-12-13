@@ -17,7 +17,7 @@
             <h1 class="total">Total Car Services: {{ rent_a_cars|length }}</h1>
             <div class="services">
                 {% for rent_a_car in rent_a_cars %}
-                    <a href="#"><div class="service">
+                    <a href="{% url 'rent-a-car-details' rent_a_car.id %}"><div class="service">
                         <img src="{{ rent_a_car.logo }}" alt="logo" class="logo">
                         <div class="info">
                             <h1 class="name">{{ rent_a_car.name }}</h1>

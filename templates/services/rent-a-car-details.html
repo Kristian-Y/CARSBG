@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+CARS BG CAR SERVICE DETAILS
+{% endblock %}
+
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/rent-a-car-details.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section class="main">
+        <h1 class="title">Rent A Car</h1>
+        <div class="info">
+            <h1>Name: {{ rentacar.name }}</h1>
+            <h1>Opens from: {{ rentacar.time_open }}</h1>
+            <h1>Closes in: {{ rentacar.time_close }}</h1>
+            <h1>Location: {{ rentacar.location }}</h1>
+            <h1>Owner: <a href="{% url 'profile-details' rentacar.user.id %}" class="owner">{{ rentacar.user.username }}</a></h1>
+        </div>
+        <div class="description">
+            <h1>Description</h1>
+            {{ rentacar.description }}
+        </div>
+        <div class="cars">
+            <h1>Cars</h1>
+            {{ rentacar.cars }}
+        </div>
+        <img src="{{ rentacar.logo }}" alt="Suv img" class="image">
+    </section>
+{% endblock %}

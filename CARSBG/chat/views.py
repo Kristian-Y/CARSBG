@@ -18,6 +18,24 @@ class ChatView(View):
         chat_rooms = ChatRoom.objects.all()
 
         # Query the database to get the list of messages for the selected chat room
+
+
+        # Render the chat page
+        return render(request, 'chat/chat.html', {'user': user, 'chat_rooms': chat_rooms, 'messages': messages,
+                                                  'selected_chat_room': selected_chat_room})
+
+
+class Chats(View):
+    def get(self, request):
+        request_user = User.objects.get(id=request.user.id)
+        chats = []
+
+        for chat in ChatRoom.objects.all():
+            for user in chat.users.all():
+                if user == request_user:
+                    chats.append([chat, chat.users.all()[0], chat.users.all()[1]])
+
+        # Query the database to get the list of messages for the selected chat room
         selected_chat_room = ''
         for i in request.GET.items():
             selected_chat_room = i[1]
@@ -33,9 +51,13 @@ class ChatView(View):
             selected_chat_room = None
             messages = []
 
-        # Render the chat page
-        return render(request, 'chat/chat.html', {'user': user, 'chat_rooms': chat_rooms, 'messages': messages,
-                                                  'selected_chat_room': selected_chat_room})
+        context = {
+            'chats': chats,
+            'messages': list(messages),
+            'selected_chat_room': selected_chat_room
+        }
+
+        return render(request, 'chat/chat.html', context)
 
 
 class SendMessageView(View):

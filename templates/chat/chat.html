@@ -1,33 +1,63 @@
-<!-- chat.html -->
-<h1>Chat</h1>
+{% extends 'base.html' %}
 
-<p>Welcome, {{ user.username }}.</p>
+{% block title %}
+CARS BG CHATS
+{% endblock %}
 
-<h2>Chat rooms</h2>
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}">
+{% endblock %}
 
-<ul>
-    {% for chat_room in chat_rooms %}
-        <li><a href="{% url 'chat' %}?chat_room={{ chat_room.name }}">{{ chat_room.name }}</a></li>
-    {% endfor %}
-</ul>
+{% block content %}
+    <section class="main">
+
+        <div class="chats">
+        <h1 class="title">Chats</h1>
+            {% for chat in chats %}
+                <a href="{% url 'chat' %}?chat_room={{ chat.0.name }}"><div class="chat">
+                    {% if chat.1 != request.user %}
+                        <h1 class="name"> {{ chat.1 }}</h1>
+                    {% else %}
+                        <h1 class="name"> {{ chat.2 }}</h1>
+                    {% endif %}
+                </div></a>
+            {% endfor %}
+        </div>
+        <div class="message">
+            <div class="chat-messages">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.sender == request.user %}
+                            <div class="container darker">
+                                {% if request.user.profile_picture != None %}
+                                    <img src="{{ request.user.profile_picture }}" alt="Avatar" class="right" style="width:100%;">
+                                {% else %}
+                                    <img src="{% load static %} {% static 'img/profile_img.png' %}" alt="Avatar" class="right" style="width:100%;">
+                                {% endif %}
+                                <p>{{ message.text }}</p>
+                                <span class="time-left">{{ message.timestamp}}</span>
+                            </div>
+                        {% else %}
+                            <div class="container">
+                            {% if message.sender.profile_picture != None %}
+                                    <img src="{{ message.sender.profile_picture }}" alt="Avatar" style="width:100%;">
+                                {% else %}
+                                    <img src="{% static 'img/profile_img.png' %}" alt="Avatar" style="width:100%;">
+                                {% endif %}
+                                <p>{{ message.text }}</p>
+                                <span class="time-right">{{ message.timestamp }}</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                {% else %}
+                    <h1>No messages in the chat or no selected chat</h1>
+                {% endif %}
+            </div>
+        </div>
 
 
-{% if messages %}
-    <h2>Messages</h2>
-
-    <ul>
-        {% for message in messages %}
-            <li>{{ message.sender.username }}: {{ message.text }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-
-<form method="post" action="{% url 'send_message' %}">
-    <label for="message">Message:</label>
-    <input type="text" name="message" id="message">
-    <br>
-    <input type="hidden" name="chat_room" value="{{ selected_chat_room.name }}">
-    <input type="submit" value="Send">
-    {% csrf_token %}
-</form>
+    </section>
+{% endblock %}

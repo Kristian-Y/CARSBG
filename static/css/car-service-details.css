@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    background: rgb(156,156,156);
+    background: linear-gradient(90deg, rgba(156,156,156,1) 0%, rgba(217,217,217,1) 100%);
+}
+
+.nav {
+    background-color: white;
+}
+
+.main {
+    position: relative;
+    margin: 0;
+    background-image: url("../img/background.png");
+    height: 985px;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+
+.title {
+    text-align: center;
+    margin: 0;
+    font-size: 150%;
+}
+
+.image {
+    position: absolute;
+    top: 14%;
+    left: 68%;
+    width: 9%;
+    height: 14%;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.info {
+    color: white;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.77);
+    top: 8%;
+    left: 16%;
+    border-radius: 10px;
+}
+
+.info h1 {
+    margin: 35px;
+}
+
+
+.owner {
+    text-decoration: none;
+    color: white;
+}
+
+.description {
+    position: absolute;
+    top: 65%;
+    left: 31%;
+    height: 26%;
+    width: 39%;
+    background-color: rgba(0, 0, 0, 0.77);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}

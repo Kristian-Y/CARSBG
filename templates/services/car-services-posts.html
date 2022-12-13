@@ -17,7 +17,7 @@
             <h1 class="total">Total Car Services: {{ car_services|length }}</h1>
             <div class="services">
                 {% for car_service in car_services %}
-                    <a href="#"><div class="service">
+                    <a href="{% url 'car-service-details' car_service.id %}"><div class="service">
                         <img src="{{ car_service.logo }}" alt="logo" class="logo">
                         <div class="info">
                             <h1 class="name">{{ car_service.name }}</h1>
