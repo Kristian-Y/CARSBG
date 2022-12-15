@@ -33,7 +33,7 @@ class Chats(View):
         for chat in ChatRoom.objects.all():
             for user in chat.users.all():
                 if user == request_user:
-                    chats.append([chat, chat.users.all()[0], chat.users.all()[1]])
+                    chats.append([chat, chat.name.split('-')])
 
         # Query the database to get the list of messages for the selected chat room
         selected_chat_room = ''
@@ -51,6 +51,7 @@ class Chats(View):
             selected_chat_room = None
             messages = []
 
+        print(chats[0][1])
         context = {
             'chats': chats,
             'messages': list(messages),
@@ -61,7 +62,7 @@ class Chats(View):
 
 
 class SendMessageView(View):
-    def post(self, request):
+    def post(self, request, pk):
         # Get the user from the session
         user_id = request.user.id
         user = User.objects.get(id=user_id)
@@ -71,7 +72,7 @@ class SendMessageView(View):
 
         # Get the selected chat room
         print(request.POST)
-        selected_chat_room = request.POST['chat_room']
+        selected_chat_room = pk
         if selected_chat_room is not None:
             try:
                 selected_chat_room = ChatRoom.objects.get(name=selected_chat_room)
@@ -86,4 +87,23 @@ class SendMessageView(View):
             message.save()
 
         # Redirect back to the chat page
+        return redirect('chat')
+
+
+class OpenChatFromProfileDetails(View):
+    def get(self, request, pk):
+        chats = ChatRoom.objects.all()
+        second_user = User.objects.get(id=pk)
+
+        print(second_user)
+
+        for chat in chats:
+            if chat.name == request.user.username + '-' + second_user.username or chat.name == second_user.username + '-' + request.user.username:
+                return redirect('chat')
+
+        chat_name = request.user.username + '-' + second_user.username
+
+        created_chat_room = ChatRoom.objects.create(name=chat_name)
+        created_chat_room.users.add(request.user)
+        created_chat_room.users.add(second_user)
         return redirect('chat')

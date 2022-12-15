@@ -34,7 +34,7 @@
             <a href="{% url 'profile-edit' user.id %}" class="edit-a"><img src="../../static/img/edit-a.png" alt="Edit" class="edit-img"></a>
             <a href="{% url 'profile-delete' user.id %}" class="delete-a"><img src="../../static/img/delete-user.png" alt="delete" class="delete-img"></a>
         {% else %}
-            <a href="" class="send-a"><img src="../../static/img/send-message.png" alt="Send Message" class="send-img"></a>
+            <a href="{% url 'open-chat' user.id %}" class="send-a"><img src="../../static/img/send-message.png" alt="Send Message" class="send-img"></a>
         {% endif %}
 
         {% if user.profile_picture %}

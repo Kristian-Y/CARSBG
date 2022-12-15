@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="../../static/css/register.css" />
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %} " />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
@@ -25,7 +26,7 @@
                 <i class="fa fa-key icon"></i>
                 {{ form.password|placeholder:'Password: ' }}
             </div>
-            <button type="submit" class="register-btn">REGISTER</button>
+            <button type="submit" class="register-btn">LOGIN</button>
             {% csrf_token %}
         </form>
     </div>

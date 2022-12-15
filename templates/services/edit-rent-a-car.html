@@ -12,8 +12,8 @@
 
 {% block content %}
     <div class="form">
-        <h1 class="title">LIST RENT A CAR</h1>
-        <form class="register-form" method="post" action="{% url 'create-rent-a-car' %} ">
+        <h1 class="title">EDIT RENT A CAR</h1>
+        <form class="register-form" method="post" action="{% url 'rent-a-car-edit' %} ">
 
             {{ form.errors }}
             <div class="input-container">
@@ -50,7 +50,7 @@
                 {{ form.logo }}
             </div>
 
-            <button type="submit" class="register-btn">LIST</button>
+            <button type="submit" class="register-btn">EDIT</button>
             {% csrf_token %}
         </form>
     </div>

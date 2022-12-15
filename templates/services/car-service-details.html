@@ -25,5 +25,9 @@ CARS BG CAR SERVICE DETAILS
             {{ carservice.description }}
         </div>
         <img src="{{ carservice.logo }}" alt="Suv img" class="image">
+        {% if carservice.user == request.user %}
+            <a href="{% url 'car-service-delete' carservice.id %}" class="delete-a">🗑️</a>
+            <a href="{% url 'car-service-edit' carservice.id %}" class="edit-a">✍️️</a>
+        {% endif %}
     </section>
 {% endblock %}

@@ -26,7 +26,6 @@
 }
 
 .chat {
-    position: absolute;
     color: white;
     margin-left: 10px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -112,4 +111,23 @@
 .time-left {
   float: left;
   color: #999;
+}
+
+.send-message {
+    width: 98%;
+    margin: 10px;
+    background-color: #3a3aff;
+    border-radius: 15px;
+}
+
+.input {
+    width: 94%;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.send {
+    border-radius: 5px;
+    color: black;
+    background: white;
 }

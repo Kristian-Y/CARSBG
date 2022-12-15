@@ -29,5 +29,9 @@ CARS BG CAR SERVICE DETAILS
             {{ rentacar.cars }}
         </div>
         <img src="{{ rentacar.logo }}" alt="Suv img" class="image">
+        {% if rentacar.user == request.user %}
+            <a href="{% url 'rent-a-car-delete' rentacar.id %}" class="delete-a">🗑️</a>
+            <a href="{% url 'rent-a-car-edit' rentacar.id %}" class="edit-a">✍️️</a>
+        {% endif %}
     </section>
 {% endblock %}

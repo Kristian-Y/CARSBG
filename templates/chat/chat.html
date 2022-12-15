@@ -17,11 +17,11 @@ CARS BG CHATS
         <h1 class="title">Chats</h1>
             {% for chat in chats %}
                 <a href="{% url 'chat' %}?chat_room={{ chat.0.name }}"><div class="chat">
-                    {% if chat.1 != request.user %}
-                        <h1 class="name"> {{ chat.1 }}</h1>
-                    {% else %}
-                        <h1 class="name"> {{ chat.2 }}</h1>
-                    {% endif %}
+                    {% for chat_user in chat.1 %}
+                        {% if chat_user != request.user.username %}
+                            <h1 class="name"> {{ chat_user }}</h1>
+                        {% endif %}
+                    {% endfor %}
                 </div></a>
             {% endfor %}
         </div>
@@ -54,6 +54,15 @@ CARS BG CHATS
 
                 {% else %}
                     <h1>No messages in the chat or no selected chat</h1>
+                {% endif %}
+            </div>
+            <div class="send-message">
+                {% if selected_chat_room != None %}
+                    <form method="post" action="{% url 'send_message' selected_chat_room.name %}">
+                        <input type="text" name="message" required id="id_message" class="input">
+                        <button type="submit" class="send">send</button>
+                        {% csrf_token %}
+                    </form>
                 {% endif %}
             </div>
         </div>

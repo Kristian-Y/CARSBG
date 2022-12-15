@@ -12,6 +12,9 @@
     text-decoration: none;
     color: rgb(255, 255, 255);
     background-color: #111;
+    float: right;
+    position: relative;
+    top:-50px;
 }
 
 .sidenav {
@@ -48,6 +51,34 @@
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+.main {
+    position: relative;
+    margin: 0;
+    background-image: url("../img/background.png");
+    height: 985px;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.cars {
+    height: 700px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container {
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+}
+
+.img {
+    border-radius: 5px;
+    height: 500px;
+    width: 600px;
 }
 
 @media screen and (max-height: 450px) {

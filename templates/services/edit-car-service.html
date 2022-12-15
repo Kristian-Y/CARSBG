@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
- CARS.BG CREATE CAR SERVICE
+ CARS.BG EDIT CAR SERVICE
 {% endblock %}
 
 {% block style %}
@@ -12,8 +12,8 @@
 
 {% block content %}
     <div class="form">
-        <h1 class="title">LIST RENT A CAR</h1>
-        <form class="register-form" method="post" action="{% url 'create-rent-a-car' %} ">
+        <h1 class="title">EDIT CAR SERVICE</h1>
+        <form class="register-form" method="post" action="{% url 'car-service-edit' carservice.id %} ">
 
             {{ form.errors }}
             <div class="input-container">
@@ -24,11 +24,6 @@
             <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
                 {{ form.description }}
-            </div>
-
-            <div class="input-container">
-                <i class="fa fa-envelope icon"></i>
-                {{ form.cars }}
             </div>
 
             <div class="input-container">
@@ -50,7 +45,7 @@
                 {{ form.logo }}
             </div>
 
-            <button type="submit" class="register-btn">LIST</button>
+            <button type="submit" class="register-btn">EDIT</button>
             {% csrf_token %}
         </form>
     </div>

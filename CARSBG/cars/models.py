@@ -57,4 +57,4 @@ class Car(models.Model):
         blank=True,
     )
 
-    images = models.ImageField(upload_to='img/', )
+    images = models.URLField()

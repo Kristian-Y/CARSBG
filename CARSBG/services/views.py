@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import generic
 
 from CARSBG.services.forms import CreateCarServiceForm, CreateRentACarForm
 from CARSBG.services.models import CarService, RentACar
+
 
 # Create your views here.
 
@@ -59,3 +61,59 @@ class CarServiceDetails(generic.DetailView):
 class RentACarDetails(generic.DetailView):
     template_name = 'services/rent-a-car-details.html'
     model = RentACar
+
+
+class CarServiceDelete(generic.DeleteView):
+    template_name = 'services/cart-service-delete.html'
+    model = CarService
+
+    def get_context_data(self, **kwargs):
+        context = super(CarServiceDelete, self).get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        context['pk'] = pk
+        return context
+
+    def post(self, request, **kwargs):
+        car_service = CarService.objects.get(id=self.kwargs['pk'])
+        car_service.delete()
+        return redirect('car-services-posts')
+
+
+class RentACarDelete(generic.DeleteView):
+    template_name = 'services/rent-a-car-delete.html'
+    model = RentACar
+
+    def get_context_data(self, **kwargs):
+        context = super(RentACarDelete, self).get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        context['pk'] = pk
+        return context
+
+    def post(self, request, **kwargs):
+        rent_service = RentACar.objects.get(id=self.kwargs['pk'])
+        rent_service.delete()
+        return redirect('rent-a-car-posts')
+
+
+class CarServiceEdit(generic.UpdateView):
+    template_name = 'services/edit-car-service.html'
+    model = CarService
+    fields = ('name', 'description', 'time_open', 'time_close', 'location', 'logo')
+
+    def get_success_url(self):
+        car_service = CarService.objects.get(name=self.request.POST['name'])
+        return reverse_lazy('car-service-details', kwargs={
+            'pk': car_service.id
+        })
+
+
+class RentACarEdit(generic.UpdateView):
+    template_name = 'services/create-rent-a-car.html'
+    model = RentACar
+    fields = ('name', 'description', 'time_open', 'time_close', 'location', 'logo', 'cars')
+
+    def get_success_url(self):
+        rent_a_car = RentACar.objects.get(name=self.request.POST['name'])
+        return reverse_lazy('car-service-details', kwargs={
+            'pk': rent_a_car.id
+        })

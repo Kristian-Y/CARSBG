@@ -51,6 +51,19 @@ body {
     color: white;
 }
 
+.delete-a {
+    position: relative;
+    left: 68%;
+    top: 31%;
+    font-size: 281%;
+}
+.edit-a {
+    position: relative;
+    left: 70%;
+    top: 31%;
+    font-size: 281%;
+}
+
 .description {
     position: absolute;
     top: 65%;
