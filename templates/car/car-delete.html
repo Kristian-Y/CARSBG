@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../static/css/profile-details.css" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile-details.css' %}" />
 {% endblock %}
 
 {% block content %}

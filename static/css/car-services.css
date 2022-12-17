@@ -63,3 +63,7 @@
     margin: 0;
 }
 
+.no-cars{
+    text-align: center;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}

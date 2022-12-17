@@ -4,8 +4,9 @@
 {% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../static/css/about.css" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
 {% endblock %}
 {% block content %}
     <section class="about-us">
