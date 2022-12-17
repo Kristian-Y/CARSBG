@@ -12,46 +12,50 @@
 
 {% block content %}
     <div class="form">
+    {% if rentacar.user == request.user %}
         <h1 class="title">EDIT RENT A CAR</h1>
-        <form class="register-form" method="post" action="{% url 'rent-a-car-edit' %} ">
-
+        <form class="register-form" method="post" action="{% url 'rent-a-car-edit' rentacar.id %} ">
+            {% load test %}
             {{ form.errors }}
             <div class="input-container">
                 <i class="fa fa-user icon"></i>
-                {{ form.name }}
+                {{ form.name|placeholder:'Name' }}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
-                {{ form.description }}
+                {{ form.description|placeholder:'Description' }}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
-                {{ form.cars }}
+                {{ form.cars|placeholder:'Cars' }}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                {{ form.time_open }}
+                {{ form.time_open|placeholder:'Opening at' }}
             </div>
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                {{ form.time_close }}
-            </div>
-
-            <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                {{ form.location }}
+                {{ form.time_close|placeholder:'Close in' }}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                {{ form.logo }}
+                {{ form.location|placeholder:'Location' }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.logo|placeholder:'Logo URL' }}
             </div>
 
             <button type="submit" class="register-btn">EDIT</button>
             {% csrf_token %}
         </form>
+    {% else %}
+        <h1>You are not authenticated to do that</h1>
+    {% endif %}
     </div>
 {% endblock %}

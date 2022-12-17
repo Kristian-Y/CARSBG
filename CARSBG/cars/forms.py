@@ -28,5 +28,5 @@ class CreateCarForm(forms.ModelForm):
         model = Car
         fields = '__all__'
         widgets = {
-            'description': Textarea(attrs={'cols': 17, 'rows': 10}),
+            'description': Textarea(attrs={'cols': 20, 'rows': 10}),
         }

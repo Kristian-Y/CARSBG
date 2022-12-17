@@ -12,48 +12,56 @@
 
 {% block content %}
     <div class="form">
-    {% if request.user.is_authenticated %}
-        <h1 class="title">LIST CAR SERVICE</h1>
-        <form class="register-form" method="post" action="{% url 'create-car-service' %} ">
+    {% if car.user == request.user %}
+        <h1 class="title">EDIT CAR</h1>
+        <form class="register-form" method="post" action="{% url 'car-edit' car.id %} ">
 
             {{ form.errors }}
-            {% load test %}
             <div class="input-container">
                 <i class="fa fa-user icon"></i>
-                {{ form.name|placeholder:'Name' }}
+                {{ form.car_brand }}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-envelope icon"></i>
-                {{ form.description|placeholder:'Description' }}
+                {{ form.car_model }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                {{ form.engine }}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                {{ form.time_open|placeholder:'Opening in' }}
+                {{ form.type_of_fuel }}
             </div>
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                {{ form.time_close|placeholder:'Close in' }}
+                {{ form.description}}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                {{ form.location|placeholder:'Location' }}
+                {{ form.year }}
             </div>
 
             <div class="input-container">
                 <i class="fa fa-key icon"></i>
-                {{ form.logo|placeholder:'Logo URL' }}
+                {{ form.price }}
             </div>
 
-            <button type="submit" class="register-btn">LIST</button>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                {{ form.images }}
+            </div>
+
+            <button type="submit" class="register-btn">EDIT</button>
             {% csrf_token %}
         </form>
     {% else %}
         <h1>You are not authenticated to do that</h1>
-        <br>
-        <h1>Go <a href="{% url 'login' %}">SingIn</a> or <a href="{% url 'register' %}">SingUp</a></h1>
     {% endif %}
     </div>
 {% endblock %}

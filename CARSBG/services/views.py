@@ -16,13 +16,38 @@ def services_types(request):
 class CreateCarService(generic.CreateView):
     form_class = CreateCarServiceForm
     template_name = 'services/create-car-service.html'
-    success_url = 'index'
+
+    def post(self, request, *args, **kwargs):
+        create_car_service_form = CreateCarServiceForm(request.POST)
+        if create_car_service_form.is_valid():
+            car_service = create_car_service_form.save(commit=False)
+            car_service.user = request.user
+            car_service.save()
+            return redirect('car-services-posts')
+
+        context = {
+            'form': create_car_service_form
+        }
+        return render(request, self.template_name, context)
 
 
 class CreateRentACar(generic.CreateView):
     form_class = CreateRentACarForm
     template_name = 'services/create-rent-a-car.html'
     success_url = 'index'
+
+    def post(self, request, *args, **kwargs):
+        create_rent_service_form = CreateRentACarForm(request.POST)
+        if create_rent_service_form.is_valid():
+            car_service = create_rent_service_form.save(commit=False)
+            car_service.user = request.user
+            car_service.save()
+            return redirect('rent-a-car-posts')
+
+        context = {
+            'form': create_rent_service_form
+        }
+        return render(request, self.template_name, context)
 
 
 class CarServicesPost(generic.CreateView):
@@ -101,19 +126,19 @@ class CarServiceEdit(generic.UpdateView):
     fields = ('name', 'description', 'time_open', 'time_close', 'location', 'logo')
 
     def get_success_url(self):
-        car_service = CarService.objects.get(name=self.request.POST['name'])
+        car_service = CarService.objects.get(id=self.kwargs['pk'])
         return reverse_lazy('car-service-details', kwargs={
             'pk': car_service.id
         })
 
 
 class RentACarEdit(generic.UpdateView):
-    template_name = 'services/create-rent-a-car.html'
+    template_name = 'services/edit-rent-a-car.html'
     model = RentACar
     fields = ('name', 'description', 'time_open', 'time_close', 'location', 'logo', 'cars')
 
     def get_success_url(self):
-        rent_a_car = RentACar.objects.get(name=self.request.POST['name'])
-        return reverse_lazy('car-service-details', kwargs={
+        rent_a_car = RentACar.objects.get(id=self.kwargs['pk'])
+        return reverse_lazy('rent-a-car-details', kwargs={
             'pk': rent_a_car.id
         })

@@ -30,5 +30,9 @@
     </div>
 
     <img src="{{ car.images }}" alt="Smiley face" class="image" >
+    {% if car.user == request.user %}
+        <a href="{% url 'car-delete' car.id %}" class="delete-a">🗑️</a>
+        <a href="{% url 'car-edit' car.id %}" class="edit-a">✍</a>
+    {% endif %}
 </section>
 {% endblock %}

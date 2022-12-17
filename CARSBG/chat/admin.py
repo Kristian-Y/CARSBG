@@ -7,9 +7,11 @@ from CARSBG.chat.models import ChatRoom, Message
 
 @admin.register(ChatRoom)
 class ChatRoomAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "name",)
+    list_filter = ("id",)
 
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "sender", "text", "chat_room", "timestamp")
+    list_filter = ("id", "sender", "timestamp",)

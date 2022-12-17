@@ -7,4 +7,5 @@ from CARSBG.cars.models import Car
 
 @admin.register(Car)
 class AdminCar(admin.ModelAdmin):
-    pass
+    list_display = ("id", "car_brand", "car_model", "user", )
+    list_filter = ("year",)

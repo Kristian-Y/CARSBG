@@ -1,64 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../static/css/car_advert_form.css" />
+{% extends 'base.html' %}
+
+{% block title %}
+CARS BG LIST CAR FOR SALE
+{% endblock %}
+
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/car_advert_form.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+{% endblock %}
 
-</head>
-<body>
-    
+{% block content %}
+    <section class="main">
+    {% load test %}
     <div class="form">
-        <h1 class="title">Create Car Advert</h1>
-        <img src="../../static/img/car.png" alt="Smiley face" class="form_image" width="519" height="513">
+        {% if request.user.is_authenticated %}
+
+        <h1 class="title">List Car For Sale</h1>
         <form class="register-form" method="post" action="{% url 'create-car-advert' %} ">
-            
+
             {{ form.errors }}
             <div class="input-container">
-                <i class="fa fa-user icon"></i>
-                {{ form.car_brand }}
+                <i class="fa fa-car icon"></i>
+                {{ form.car_brand|placeholder:'Car Brand' }}
             </div>
 
             <div class="input-container">
-                <i class="fa fa-envelope icon"></i>
-                {{ form.car_model }}
+                <i class="fa fa-car icon"></i>
+                {{ form.car_model|placeholder:'Car Model' }}
             </div>
 
             <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                {{ form.engine }}
+                <i class="fa fa-car icon"></i>
+                {{ form.engine|placeholder:'Car Engine' }}
             </div>
             <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                {{ form.type_of_fuel }}
-            </div>
-            
-            <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                {{ form.description }}
+                <i class="fa fa-info icon"></i>
+                {{ form.type_of_fuel|placeholder:'Fuel' }}
             </div>
 
             <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                {{ form.year }}
+                <i class="fa fa-info icon"></i>
+                {{ form.description|placeholder:'Description' }}
             </div>
 
             <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                {{ form.price }}
+                <i class="fa fa-info icon"></i>
+                {{ form.year|placeholder:'Year' }}
             </div>
 
             <div class="input-container">
-                <i class="fa fa-key icon"></i>
-               {{ form.images }}
+                <i class="fa fa-info icon"></i>
+                {{ form.price|placeholder:'Price' }}
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-picture-o icon"></i>
+               {{ form.images|placeholder:'Image URL' }}
             </div>
 
 
-            <button type="submit" class="register-btn">ADVERT</button>
+            <button type="submit" class="register-btn">LIST</button>
             {% csrf_token %}
         </form>
+        {% else %}
+        <h1>You are not authenticated to do that</h1>
+        <br>
+        <h1>Go <a href="{% url 'login' %}">SingIn</a> or <a href="{% url 'register' %}">SingUp</a></h1>
+    {% endif %}
     </div>
-</body>
-</html>
+    </section>
+{% endblock %}

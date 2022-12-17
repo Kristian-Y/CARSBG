@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    CARS BG CATALOGUE
+{% endblock %}
+
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/catalogue.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section class="main">
+    <h1 class="total">My Cars</h1>
+        {% if cars %}
+            <div class="cars">
+                {% for car in cars %}
+                <div class="card">
+                    <img src="{{ car.images }}" alt="Avatar" style="width:100%" class="img">
+                    <div class="container">
+                        <h4><b>{{ car.car_brand }} {{ car.car_model }}</b></h4>
+                        <p>Price: {{ car.price }}</p>
+                        <a href="{% url 'car details' car.id %}" class="details_btn">DETAILS</a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <h1 class="no-cars">No cars for sale</h1>
+        {% endif %}
+    </section>
+{% endblock %}

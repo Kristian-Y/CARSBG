@@ -8,4 +8,5 @@ UserModel = get_user_model()
 
 @admin.register(UserModel)
 class AppUserAdmin(auth_admin.UserAdmin):
-    pass
+    list_display = ("id", "first_name", "last_name", "email",)
+    list_filter = ("id", "first_name", "last_name", "email",)
